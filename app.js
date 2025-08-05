@@ -1,14 +1,15 @@
 //  Se crea e inicializa el arreglo para almacenar los nombres ingresados por el usuario.
 let amigos = [];
-let resultado = '';
 
 // Funcion para agregar los nombres de los amigos del usuario.
 function agregarAmigo(){
-    resultado.innerHTML = '';
+    // Limpiar resultado anterior del sorteo
+    document.getElementById('resultado').innerHTML = '';
     // Se almacena el nombre del amigo en la variable nombreDeAmigo
     let nombreDeAmigo = document.getElementById('amigo').value;
     // Se utiliza una expresión regular para evitar numeros.
     const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+//    repetidos = nombresRepetidos();
 
     /*  Condicional para verificar si se ingresa un nombre valido, si el nombre contiene 
         numeros o caracteres especiales pide que ingrese un nombre valido y si es valido,
@@ -18,6 +19,9 @@ function agregarAmigo(){
     }
     else if (!soloLetras.test(nombreDeAmigo)){
         alert("El nombre no debe contener números ni caracteres especiales.");
+        document.getElementById('amigo').value = '';
+    } else if (amigos.includes(nombreDeAmigo)) {
+        alert('El nombre ya fue ingresado.');
         document.getElementById('amigo').value = '';
     } else {
         amigos.push(nombreDeAmigo);
@@ -50,16 +54,14 @@ function actualizarListaAmigos(listaDeAmigos){
 
 // Funcion sortear amigo secreto.
 function sortearAmigo(){
-    resultado.innerHTML = ''; // Se limpia el resultado del amigo secreto.
+    document.getElementById('resultado').innerHTML = ''; // Se limpia el resultado del amigo secreto.
     /*  Se verifica que hayan mas de dos nombres agregado para poder hacer el sorteo y se actualiza
         con el numero random, cual es el amigo secreto sorteado y se muestra en pantalla. */
     if (amigos.length < 2) {
         alert('Necesita al menos dos amigos en la lista para realizar el sorteo.')
     } else {
         let numeroRandom = Math.floor(Math.random()*amigos.length);
-        resultado = document.getElementById('resultado');
+        let resultado = document.getElementById('resultado');
         resultado.innerHTML = amigos[numeroRandom];
     }    
 }
-
-
