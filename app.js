@@ -48,3 +48,18 @@ function actualizarListaAmigos(listaDeAmigos){
     }
 }
 
+// Funcion sortear amigo secreto.
+function sortearAmigo(){
+    resultado.innerHTML = ''; // Se limpia el resultado del amigo secreto.
+    /*  Se verifica que hayan mas de dos nombres agregado para poder hacer el sorteo y se actualiza
+        con el numero random, cual es el amigo secreto sorteado y se muestra en pantalla. */
+    if (amigos.length < 2) {
+        alert('Necesita al menos dos amigos en la lista para realizar el sorteo.')
+    } else {
+        let numeroRandom = Math.floor(Math.random()*amigos.length);
+        resultado = document.getElementById('resultado');
+        resultado.innerHTML = amigos[numeroRandom];
+    }    
+}
+
+
