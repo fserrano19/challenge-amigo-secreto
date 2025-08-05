@@ -28,3 +28,23 @@ function agregarAmigo(){
     return amigos;
 }
 
+// Funcion actualizar la lista de amigos en la pantalla.
+function actualizarListaAmigos(listaDeAmigos){
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML = ''; // Para limpiar el contenido previo.
+    /*  se verifica que hay nombres en la lista, luego se crea un elemento li en el html para
+    listar los nombres agregados, con el for se recorre cada posicion del arreglo y se agrega 
+    a la lista, finalmente se agrega todo bajo la misma lista.*/
+    if (listaDeAmigos.length > 0) {
+        for (let i = 0; i < listaDeAmigos.length; i++) {
+            let li = document.createElement('li');
+            li.textContent = listaDeAmigos[i];
+            lista.appendChild(li);            
+        }
+    } else {
+        let li = document.createElement('li');
+        li.textContent = 'No hay amigos agregados.';
+        lista.appendChild(li);
+    }
+}
+
