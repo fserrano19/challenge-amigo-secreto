@@ -1,8 +1,10 @@
 //  Se crea e inicializa el arreglo para almacenar los nombres ingresados por el usuario.
-let nombreAmigos = [];
+let amigos = [];
+let resultado = '';
 
 // Funcion para agregar los nombres de los amigos del usuario.
 function agregarAmigo(){
+    resultado.innerHTML = '';
     // Se almacena el nombre del amigo en la variable nombreDeAmigo
     let nombreDeAmigo = document.getElementById('amigo').value;
     // Se utiliza una expresión regular para evitar numeros.
@@ -18,10 +20,11 @@ function agregarAmigo(){
         alert("El nombre no debe contener números ni caracteres especiales.");
         document.getElementById('amigo').value = '';
     } else {
-        nombreAmigos.push(nombreDeAmigo);
+        amigos.push(nombreDeAmigo);
+        actualizarListaAmigos(amigos);
         document.getElementById('amigo').value = '';
     }
-    console.log(nombreAmigos);
-    return nombreAmigos;
+    console.log(amigos);
+    return amigos;
 }
 
